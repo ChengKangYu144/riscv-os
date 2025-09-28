@@ -13,3 +13,10 @@ _start:
     call main
 
 1:  j 1b    # 如果 main 返回，死循环
+
+# 栈空间
+.section .bss
+    .align 16
+stack_bottom:
+    .space 0x4000   # 16KB 栈
+stack_top:

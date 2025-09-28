@@ -9,7 +9,7 @@ SECTIONS
     *(.text.entry)
     *(.text .text.*)
     *(.rodata .rodata.*)
-}
+  }
 
   .data : {
     *(.data .data.*)
@@ -25,11 +25,4 @@ SECTIONS
   }
 
   end = .;
-
-  .stack (NOLOAD) : {
-    . = ALIGN(16);
-    stack_bottom = .;
-    . = . + 16K;
-    stack_top = .;
-  }
 }

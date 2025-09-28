@@ -21,10 +21,11 @@ echo "[1] 编译内核..."
 $CC $CFLAGS -c ../kernel/boot/entry.S -o entry.o
 $CC $CFLAGS -c ../kernel/main.c -o main.o
 $CC $CFLAGS -c ../kernel/driver/uart.c -o uart.o
+$CC $CFLAGS -c ../kernel/printf.c -o printf.o
 
 # 链接
 echo "[2] 链接生成 kernel.elf..."
-$CC $CFLAGS entry.o main.o uart.o -o ../kernel.elf $LDFLAGS
+$CC $CFLAGS entry.o main.o uart.o printf.o -o ../kernel.elf $LDFLAGS
 
 # 生成二进制镜像
 echo "[3] 生成 kernel.bin..."
