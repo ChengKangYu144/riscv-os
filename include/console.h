@@ -2,6 +2,7 @@
 #define CONSOLE_H
 
 void uart_init(void);
+char uart_getc(void);
 void uart_putc(char c);
 
 void console_putc(char c);
