@@ -8,6 +8,7 @@ SECTIONS
   .text : {
     *(.text.entry)
     *(.text .text.*)
+    etext = .;
   }
 
   .rodata : {
