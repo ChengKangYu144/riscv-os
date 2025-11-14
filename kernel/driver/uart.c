@@ -12,11 +12,12 @@ void uart_init(void) {
 }
 
 void uart_putc(char c) {
-    while (!(*(volatile unsigned char *)LSR & THRE));
-    *(volatile unsigned char *)THR = c;
+    // 直接写 MMIO 寄存器，避免等待 LSR 导致无法输出
+    *(volatile unsigned char *)UART0 = (unsigned char)c;
 }
 
 char uart_getc(void) {
-    while (!(*(volatile unsigned char *)LSR & DR));
+    // 保持阻塞读（按需可改为非阻塞或带超时）
+    while (!(*(volatile unsigned char *)RHR & DR));
     return *(volatile unsigned char *)RHR;
 }
